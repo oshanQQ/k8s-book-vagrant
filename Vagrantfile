@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # always before setting up worker nodes
   config.vm.define "master" do |c|
     c.vm.hostname = "master.internal"
-    c.vm.network "private_network", ip: "192.168.56.21"
+    c.vm.network "private_network", ip: "192.168.56.11"
     c.vm.provider "virtualbox" do |v|
       v.gui = false
       v.cpus = 2
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
   (1..2).each do |n|
     config.vm.define "worker-#{n}" do |c|
       c.vm.hostname = "worker-#{n}.internal"
-      c.vm.network "private_network", ip: "192.168.56.3#{n}"
+      c.vm.network "private_network", ip: "192.168.56.2#{n}"
       c.vm.provider "virtualbox" do |v|
         v.gui = false
         v.cpus = 1
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "test" do |c|
+  config.vm.define "nfs" do |c|
     c.vm.hostname = "test.internal"
     c.vm.network "private_network", ip: "192.168.56.51"
     c.vm.provider "virtualbox" do |v|
