@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-KUBERNETES_VERSION=1.18.0-00
+KUBERNETES_VERSION=1.20.0-00
 
 # install lecagy binary
 sudo apt-get install -y iptables arptables ebtables
@@ -17,6 +17,9 @@ sudo apt-get update -y
 # install kubeadm, kubelet, kubectl
 sudo apt-get install -y kubelet=${KUBERNETES_VERSION} kubeadm=${KUBERNETES_VERSION} kubectl=${KUBERNETES_VERSION}
 sudo apt-mark hold kubelet kubeadm kubectl
+
+# install helm
+curl https://raw.githubusercontent.com/helm/helm/HEAD/scripts/get-helm-3 | bash
 
 # get private network IP addr and set bind it to kubelet
 IPADDR=$(ip a show enp0s8 | grep inet | grep -v inet6 | awk '{print $2}' | cut -f1 -d/)
