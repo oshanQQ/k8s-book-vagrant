@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     c.vm.provider "virtualbox" do |v|
       v.gui = false
       v.cpus = 2
-      v.memory = 1024
+      v.memory = 2048
     end
 
     c.vm.provision :shell, :path => "scripts/common/setup-initial-ubuntu.sh"
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
       c.vm.provider "virtualbox" do |v|
         v.gui = false
         v.cpus = 1
-        v.memory = 1024
+        v.memory = 2048
       end
 
       c.vm.provision :shell, :path => "scripts/common/setup-initial-ubuntu.sh"
@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
     c.vm.provider "virtualbox" do |v|
       v.gui = false
       v.cpus = 1
-      v.memory = 512
+      v.memory = 1024
     end
 
     c.vm.provision :shell, :path => "scripts/common/setup-initial-ubuntu.sh"
